@@ -13,5 +13,19 @@
 #         self.right = right
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
+        def getDepth(root: TreeNode) -> int:
+            if not root:
+                return 0
+            leftdepth = getDepth(root.left)
+            rightdepth = getDepth(root.right)
+            if leftdepth == -1 or rightdepth == -1 or abs(leftdepth-rightdepth)>1:
+                return -1
+            else:
+                return 1 + max(leftdepth, rightdepth)
+        return getDepth(root) >= 0 
+            
+            
+
+
 # @lc code=end
 
