@@ -16,18 +16,23 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        def preorderTraversal(root: TreeNode):
-            # if root:
-            #     nodelist.append(root)
-            #     preorderTraversal(root.left)
-            #     preorderTraversal(root.right)
-                return 
-           
+        if not root:
+            return
+        stack = [root]
+        prenode = None
+        while stack:
+            current = stack.pop()
+            if prenode != None :
+                prenode.left = None
+                prenode.right = current
+            left, right = current.left, current.right
+            if right:
+                stack.append(right)
+            if left:
+                stack.append(left)
+            prenode = current
+        
 
-        nodelist=[]
-        q = root
-        preorderTraversal(root) 
-        root = q
             
 # @lc code=end
 
