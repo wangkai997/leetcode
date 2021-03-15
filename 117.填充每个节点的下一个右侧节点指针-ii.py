@@ -17,9 +17,30 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
+        
+        def handle(last: 'Node' = None, p: 'Node' = None, nextStart: 'Node' = None):
+            if last:
+                last.next = p
+            if nextStart == None:
+                nextStart = p
+            last = p
+        
+
         if not root:
             return
-        
-        
+        start = root
+        while start:
+            last = Node()
+            nextStart = Node()
+            p = start
+            while p:
+                if p.left:
+                    handle(last, p.left, nextStart)
+                if p.right:
+                    handle(last, p.right, nextStart)
+                p = p.next
+            start = nextStart
+        return root
+
 # @lc code=end
 
