@@ -27,11 +27,11 @@ class Solution:
         
 
         if not root:
-            return
+            return root
         start = root
         while start:
-            last = Node()
-            nextStart = Node()
+            last = Node(None)
+            nextStart = Node(None)
             p = start
             while p:
                 if p.left:
@@ -41,6 +41,8 @@ class Solution:
                 p = p.next
             start = nextStart
         return root
+
+
 
 # @lc code=end
 
