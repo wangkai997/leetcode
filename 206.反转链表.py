@@ -20,7 +20,6 @@ class Solution:
             cur=cur.next
             temp.next = pre
             pre = temp
-
         return pre
 
 # @lc code=end
