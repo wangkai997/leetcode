@@ -13,23 +13,18 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
-        
-        self.cur = 0
-        self.topk = 0
+        count = 0
+        stack = []
+        while True:
+            while root:
+                stack.append(root)
+                root = root.left
+            root=stack.pop()
+            count+=1
+            if count == k:
+                return root.val
+            root = root.right            
 
-        def inorder(root,k):
-            if root == None:
-                return 
-            inorder(root.left,k)
-            self.cur += 1
-            if self.cur == k:
-                self.topk = root.val
-                return
-            inorder(root.right,k)
-
-
-        inorder(root,k)
-        return self.topk 
 
 # @lc code=end
 
